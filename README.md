@@ -1,7 +1,7 @@
 
 # Discussion Forum
 
-This Discussion Forum is a comprehensive web platform developed during an internship at South Eastern Coalfields Limited (SECL). This forum serves as a dynamic space for employees to engage in discussions, share insights, and collaborate on various topics. Built using Django framework and utilizing SQLite for data management, the forum includes features such as user authentication, responsive design, and robust functionalities. It aims to foster knowledge sharing, enhance team communication, and promote community interaction within SECL.
+This Discussion Forum, developed during an internship at South Eastern Coalfields Limited (SECL), is a dynamic web platform for employees to discuss, share insights, and collaborate. Built with Django and SQLite, it features user authentication, responsive design, and robust functionalities to foster knowledge sharing, team communication, and community interaction within SECL.
 
 
 ## Authors
