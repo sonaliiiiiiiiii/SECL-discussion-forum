@@ -71,6 +71,28 @@ python manage.py runserver
 6. Access the Application
 Open your web browser and navigate to http://127.0.0.1:8000 to start using the Discussion forum locally.
 
+## Screenshots
+**Landing Page**
+![image](https://github.com/sonaliiiiiiiiii/SECL-discussion-forum/assets/125906743/5442be80-0681-4652-9881-f8b31953285c)
+
+**Login Page**
+![image](https://github.com/sonaliiiiiiiiii/SECL-discussion-forum/assets/125906743/a2b1c6cb-d496-4cc1-9d10-7d0b589f0af6)
+
+**Signup**
+![image](https://github.com/sonaliiiiiiiiii/SECL-discussion-forum/assets/125906743/e23d4466-ee36-4291-a11e-8f318f8527eb)
+
+**Post or view questions**
+![image](https://github.com/sonaliiiiiiiiii/SECL-discussion-forum/assets/125906743/947069f4-2bf1-4adb-9a13-42cbc66e8d3c)
+
+**Post Questions**
+![image](https://github.com/sonaliiiiiiiiii/SECL-discussion-forum/assets/125906743/7f6e31f7-c1b0-42be-a4a7-edfabeae98d8)
+
+**All Questions**
+![image](https://github.com/sonaliiiiiiiiii/SECL-discussion-forum/assets/125906743/707bcd11-3805-45d9-9c30-9608024efa61)
+
+**Answer the questions and vote**
+![image](https://github.com/sonaliiiiiiiiii/SECL-discussion-forum/assets/125906743/21295bc1-900f-4ab4-8444-9d10cbc066b1)
+![image](https://github.com/sonaliiiiiiiiii/SECL-discussion-forum/assets/125906743/91ba5e1a-ac23-4b4d-9b67-050aa809b6d3)
 
 
 ## Usage/Examples
