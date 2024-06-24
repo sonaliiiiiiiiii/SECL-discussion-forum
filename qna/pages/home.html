@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block extra_styles %}
+<style>
+    .home-links {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .home-links a {
+        display: block;
+        margin-bottom: 20px;
+        padding: 10px 0;
+        background-color: #148d8d;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 18px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .home-links a:hover {
+        background-color: #0e6666;
+        transform: translateY(-3px);
+    }
+
+    .home-links h4 {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .home-links a:last-child {
+        margin-bottom: 0;
+    }
+
+    .home-links a:hover h4 {
+        color: #fff;
+    }
+
+    @media screen and (max-width: 768px) {
+        .home-links {
+            width: 80%;
+        }
+
+        .home-links a {
+            padding: 8px 0;
+            font-size: 16px;
+        }
+
+        .home-links h4 {
+            font-size: 18px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .home-links {
+            width: 95%;
+        }
+
+        .home-links a {
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
+        .home-links h4 {
+            font-size: 16px;
+        }
+    }
+
+    .logout-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .logout-link a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #148d8d;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 18px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .logout-link a:hover {
+        background-color: #0e6666;
+        transform: translateY(-3px);
+    }
+
+    .logout-link h4 {
+        margin: 0;
+        color: #fff;
+        font-size: 18px;
+        transition: color 0.3s ease;
+    }
+
+    .logout-link a:hover h4 {
+        color: #fff;
+    }
+
+    @media screen and (max-width: 768px) {
+        .logout-link a {
+            font-size: 16px;
+        }
+
+        .logout-link h4 {
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .logout-link a {
+            font-size: 14px;
+        }
+
+        .logout-link h4 {
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock extra_styles %}
+
+{% block body %}
+<div class="home-links">
+    <h4>What would you like to do?</h4>
+    <a href="post_question">
+        <h4>Post Your Question</h4>
+    </a>
+    <a href="check_qna">
+        <h4>Check Q&A</h4>
+    </a>
+</div>
+{% endblock body %}

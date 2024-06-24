@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}Questions{% endblock title %}
+
+{% block extra_styles %}
+<style>
+    /* Content Styles */
+    .content {
+        width: 1200px; /* Maximum width */
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #444; /* Dark background */
+        color: #c1e1a7; /* Text color */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .content h3 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        text-align: left;
+        border-bottom: 2px solid #c1e1a7; /* Border under the title */
+        padding-bottom: 10px;
+    }
+
+    /* Card Styles */
+    .question-card {
+        background-color: #707070; /* Dark card background */
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    .question-card:hover {
+        background-color: #666; /* Hover card background */
+    }
+
+    .question-link {
+        color: #efbc75; /* Link color */
+        text-decoration: none;
+        font-size: 18px;
+        transition: color 0.3s ease;
+    }
+
+    .question-link:hover {
+        color: #f7d48b; /* Hover link color */
+    }
+
+    .posted-by {
+        color: #999;
+        font-size: 14px;
+    }
+
+    /* Back Link */
+    .back-link {
+        margin-top: 20px;
+        color: #efbc75; /* Link color */
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .back-link:hover {
+        color: #f7d48b; /* Hover link color */
+    }
+
+    .centered-link {
+        text-align: center;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .content {
+            width: 500px;
+            padding: 10px;
+        }
+
+        .content h3 {
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .question-link {
+            font-size: 16px;
+        }
+
+        .posted-by {
+            font-size: 12px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .content {
+            width: 500px;
+            padding: 10px;
+        }
+
+        .content h3 {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .question-link {
+            font-size: 14px;
+        }
+
+        .posted-by {
+            font-size: 10px;
+        }
+    }
+</style>
+{% endblock extra_styles %}
+
+{% block body %}
+<div class="content">
+    <h3>All Questions</h3>
+
+    {% for i in res %}
+        <div class="question-card">
+            <a href="answers?qid={{ i.id }}" class="question-link">{{ i.pquestion }}</a><br>
+            <span class="posted-by">Posted by {{ i.puser }}</span>
+        </div>
+    {% endfor %}
+</div>
+<div class="centered-link">
+    <a href="home" class="back-link">Go to Home</a>
+</div>
+{% endblock body %}

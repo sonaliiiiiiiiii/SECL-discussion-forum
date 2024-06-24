@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+
+{% block body %}
+<div class="form-container">
+    <h3 style="margin-top: 0; font-size: 30px; margin-bottom: 20px;">Login</h3>
+    
+    <form action="login" method="post">
+        {% csrf_token %}
+        <input class="input-field" type="text" name="user" placeholder="Enter username" required>
+        <input class="input-field" type="password" name="upass" placeholder="Enter password" required>
+        <input class="button" type="submit" value="Login">
+    </form>
+    {{ error }}
+    <p>Don't have an account? <a href="{% url 'signup:signup' %}" style="font-size: 18px;">Signup</a></p>
+</div>
+{% endblock body %}

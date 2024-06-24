@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to SECL Discussion Forum{% endblock title %}
+
+{% block extra_styles %}
+<style>
+    body {
+        background-color: #333;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .auth-container {
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .auth-container h2 {
+        margin-bottom: 20px;
+        color: #148d8d;
+        font-size: 24px;
+    }
+
+    .auth-container p {
+        margin-bottom: 30px;
+        color: #666;
+        font-size: 16px;
+    }
+
+    .auth-box {
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* Add space between the buttons */
+        margin-top: 20px;
+    }
+
+    .auth-box a {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #148d8d;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .auth-box a:hover {
+        background-color: #0e6666;
+    }
+
+    /* Fancy animation */
+    .auth-container {
+        animation: slide-in 1s ease forwards;
+    }
+
+    @keyframes slide-in {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Responsive styles */
+    @media (max-width: 480px) {
+        .auth-container {
+            margin: 50px 20px;
+            padding: 20px;
+        }
+
+        .auth-container h2 {
+            font-size: 20px;
+        }
+
+        .auth-container p {
+            font-size: 14px;
+        }
+
+        .auth-box {
+            flex-direction: column;
+        }
+
+        .auth-box a {
+            width: 100%;
+            margin-bottom: 10px; /* Add margin between buttons for smaller screens */
+            box-sizing: border-box;
+        }
+
+        .auth-box a:last-child {
+            margin-bottom: 0; /* Remove margin for the last button */
+        }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+        .auth-container {
+            margin: 80px auto;
+            padding: 30px;
+        }
+
+        .auth-container h2 {
+            font-size: 22px;
+        }
+
+        .auth-container p {
+            font-size: 15px;
+        }
+
+        .auth-box a {
+            padding: 10px 25px;
+            font-size: 15px;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .auth-container {
+            margin: 100px auto;
+            padding: 35px;
+        }
+
+        .auth-container h2 {
+            font-size: 24px;
+        }
+
+        .auth-container p {
+            font-size: 16px;
+        }
+
+        .auth-box a {
+            padding: 12px 28px;
+            font-size: 16px;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .auth-container {
+            margin: 120px auto;
+            padding: 40px;
+        }
+
+        .auth-container h2 {
+            font-size: 26px;
+        }
+
+        .auth-container p {
+            font-size: 18px;
+        }
+
+        .auth-box a {
+            padding: 14px 30px;
+            font-size: 18px;
+        }
+    }
+</style>
+{% endblock extra_styles %}
+
+{% block body %}
+<div class="auth-container">
+    <h2>Welcome to SECL QnA Forum</h2>
+    <p>Login or Signup to continue.</p>
+    <div class="auth-box">
+        <a href="questions" class="button">Login</a>
+        <a href="signup" class="button">Signup</a>
+    </div>
+</div>
+{% endblock body %}

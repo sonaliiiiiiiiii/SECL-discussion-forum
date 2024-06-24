@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+
+{% block title %}Questions{% endblock title %}
+
+{% block extra_styles %}
+<style>
+    .qna-container {
+        background-color: #444;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        margin-top: 20px;
+        width: 1200px;
+        margin: 20px auto;
+    }
+
+    .question-section {
+        margin-bottom: 20px;
+    }
+
+    .question-heading {
+        font-size: 22px;
+        color: #c1e1a7;
+        margin-bottom: 15px;
+    }
+
+    .question-heading p {
+        font-size: 18px;
+        color: #efbc75;
+        text-align: left;
+    }
+
+    .answers-section {
+        margin-top: 20px;
+    }
+
+    .answer {
+        background-color: #555;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #666;
+    }
+
+    .answer b {
+        color: #c1e1a7;
+    }
+
+    .answer p {
+        color: #efbc75;
+        text-align: left;
+    }
+
+    .vote-buttons {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .vote-button {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 5px;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+    }
+
+    .vote-button.downvote {
+        background-color: #dc3545;
+    }
+
+    .vote-button:hover {
+        background-color: #218838;
+    }
+
+    .vote-button.downvote:hover {
+        background-color: #c82333;
+    }
+
+    .vote-button:disabled {
+        background-color: #adb5bd;
+        cursor: not-allowed;
+    }
+
+    .vote-count {
+        color: #c1e1a7;
+        font-size: 16px;
+        margin-right: 20px;
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        height: 20px;
+    }
+
+    .vote-count span {
+        display: block;
+        position: absolute;
+        width: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .answer-form {
+        margin-top: 30px;
+    }
+
+    .answer-form textarea {
+        width: 100%;
+        border: 1px solid #666;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        background-color: #555;
+        color: #c1e1a7;
+    }
+
+    .answer-form button {
+        background-color: #efbc75;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .answer-form button:hover {
+        background-color: #c1e1a7;
+    }
+
+    .button-container {
+        text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        .qna-container {
+            width: 500px;
+        }
+
+        .question-heading {
+            font-size: 20px;
+        }
+
+        .question-heading p {
+            font-size: 16px;
+        }
+
+        .answer-form textarea {
+            font-size: 14px;
+        }
+
+        .vote-button {
+            padding: 8px 8px;
+            font-size: 14px;
+        }
+
+        .vote-count {
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .qna-container {
+            width: 700px;
+        }
+
+        .question-heading {
+            font-size: 18px;
+        }
+
+        .question-heading p {
+            font-size: 14px;
+        }
+
+        .answer-form textarea {
+            font-size: 12px;
+        }
+
+        .vote-button {
+            padding: 6px 6px;
+            font-size: 12px;
+        }
+
+        .vote-count {
+            font-size: 12px;
+        }
+    }
+</style>
+{% endblock extra_styles %}
+
+{% block body %}
+<div class="qna-container">
+    <div class="question-section">
+        <div class="question-heading">
+            <b>{{ que.puser }} asked:</b>
+            <p>{{ que.pquestion }}</p>
+        </div>
+    </div>
+
+    <div class="answers-section">
+        {% for i in ans %}
+        <div class="answer" id="answer-{{ i.id }}">
+            <b>{{ i.auser }} answered:</b>
+            <p>{{ i.answr }}</p>
+            <div class="vote-buttons">
+                <button class="vote-button" onclick="vote('upvote', {{ i.id }})">
+                    <span class="icon">👍</span>
+                    <div class="vote-count" id="upvotes-{{ i.id }}">
+                        <span>{{ i.upvotes }}</span>
+                    </div>
+                </button>
+                
+                <button class="vote-button downvote" onclick="vote('downvote', {{ i.id }})">
+                    <span class="icon">👎</span>
+                    <div class="vote-count" id="downvotes-{{ i.id }}">
+                        <span>{{ i.downvotes }}</span>
+                    </div>
+                </button>
+                
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="answer-form">
+        <form action="new_ans" method="post">
+            {% csrf_token %}
+            <textarea class="answr" name="answr" rows="5" placeholder="Write your answer here..." required></textarea>
+            <input type="hidden" value="{{ que.id }}" name="qid">
+            <div class="button-container">
+                <button class="button" type="submit">Post Answer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function vote(type, answerId) {
+        const url = type === 'upvote' ? '{% url "upvote_answer" %}' : '{% url "downvote_answer" %}';
+        const data = new URLSearchParams();
+        data.append('answer_id', answerId);
+
+        fetch(url, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                updateVoteCount('upvotes', answerId, data.upvotes);
+                updateVoteCount('downvotes', answerId, data.downvotes);
+            }
+        });
+    }
+
+    function updateVoteCount(type, answerId, newCount) {
+        const countElement = document.getElementById(type + '-' + answerId).querySelector('span');
+        const currentCount = parseInt(countElement.textContent);
+        if (currentCount !== newCount) {
+            const animationClass = newCount > currentCount ? 'scroll-up' : 'scroll-down';
+            countElement.textContent = newCount;
+            countElement.style.transform = 'translateY(' + (newCount > currentCount ? '-100%' : '100%') + ')';
+            setTimeout(() => {
+                countElement.style.transform = 'translateY(0)';
+            }, 300);
+        }
+    }
+</script>
+{% endblock body %}
