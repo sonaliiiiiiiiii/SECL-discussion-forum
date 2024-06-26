@@ -30,8 +30,6 @@ This Discussion Forum, developed during an internship at South Eastern Coalfield
 
 - **Voting System**: Upvote and downvote functionality for answers to highlight the most helpful responses.
 
-- **User Profiles**: Each user has a profile that showcases their activity, questions asked, and answers provided.
-
 - **Responsive Design**: The forum is designed to be responsive, ensuring usability across devices and screen sizes.
 
 ## Deployment
